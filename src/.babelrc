@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [ "env", {
+      "targets": {
+        "node": "current",
+        "browser": [ "last 2 versions" ]
+      },
+      "modules": false,
+      "debug": true
+    }],
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    [
+      "transform-object-rest-spread", {
+        "useBuiltIns": true
+      }
+    ]
+  ]
+}
