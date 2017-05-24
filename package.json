@@ -1,15 +1,13 @@
 {
-  "name": "bookit-web2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "react-skellington",
+  "version": "0.0.1",
+  "description": "A Spoopy React Skellington",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "NODE_ENV=production webpack -p"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "BuildIt",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
