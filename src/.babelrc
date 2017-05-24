@@ -6,12 +6,11 @@
         "browser": [ "last 2 versions" ]
       },
       "modules": false,
-      "debug": true
+      "debug": false
     }],
     "react"
   ],
   "plugins": [
-    "react-hot-loader/babel",
     [
       "transform-object-rest-spread", {
         "useBuiltIns": true

@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 import './style.scss'
 
 const App = () => (
   <div className="site-wrapper">
-    <h1>Hello!</h1>
+    <h1>HAY HAY!</h1>
   </div>
 )
 

@@ -3,19 +3,23 @@ import ReactDOM from 'react-dom'
 
 import { AppContainer } from 'react-hot-loader'
 
+import configureStore from './redux/store'
+
 import Root from './Root'
 
-const render = Component => {
+const store = configureStore({})
+
+const render = () => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Root store={store} />
     </AppContainer>,
-    document.getElementById('main')
+    document.getElementById('main'),
   )
 }
 
-render(Root)
+render()
 
 if (module.hot) {
-  module.hot.accept('./Root', () => { render(Root) })
+  module.hot.accept('./Root', () => { render() })
 }

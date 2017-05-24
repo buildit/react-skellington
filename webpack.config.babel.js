@@ -10,7 +10,7 @@ export default () => {
   const baseConfig = {
     context: resolve(__dirname, 'src'),
 
-    entry: [ './index.js', ],
+    entry: ['./index.js'],
 
     output: {
       filename: '[name].js',
@@ -25,7 +25,13 @@ export default () => {
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          use: [ 'babel-loader' ],
+          enforce: 'pre',
+          use: ['eslint-loader'],
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: ['react-hot-loader/webpack', 'babel-loader'],
         },
         {
           test: /\.s?a?c?ss$/,
@@ -48,13 +54,8 @@ export default () => {
 
   const config = { ...baseConfig, ...envConfig }
 
-  if (entry)
-    config.entry = [ ...entry, ...baseConfig.entry ]
-
-  if (plugins)
-    config.plugins = [ ...plugins, ...baseConfig.plugins ]
-
-  console.log(config)
+  if (entry) config.entry = [...entry, ...baseConfig.entry]
+  if (plugins) config.plugins = [...plugins, ...baseConfig.plugins]
 
   return config
 }

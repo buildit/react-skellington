@@ -1,0 +1,19 @@
+
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "new-parens": 0,
+    "global-require": 0,
+    "import/no-dynamic-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/require-extension": "off",
+    "react/jsx-filename-extension": "off",
+    "linebreak-style": "off",
+    "arrow-parens": 0,
+    "semi": 0
+  },
+  "env": {
+    "browser": true
+  }
+}

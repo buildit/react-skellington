@@ -1,22 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { ConnectedRouter } from 'react-router-redux'
 
-import app from './redux/reducers'
+import history from './redux/history'
+import routes from './routes'
 
-import App from './containers/App';
-
-let store = createStore(app)
-
-// <Provider store={store}>
-//   <Router history={history} routes={routes(store)} />
-// </Provider>
-
-const Root = () => (
+const Root = ({ store }) => (
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      {routes()}
+    </ConnectedRouter>
   </Provider>
 )
+
+Root.propTypes = {
+  store: PropTypes.shape().isRequired,
+}
 
 export default Root

@@ -1,4 +1,4 @@
-import { HotModuleReplacementPlugin, NamedModulesPlugin, NoErrorsPlugin } from 'webpack'
+import { HotModuleReplacementPlugin, NamedModulesPlugin, NoEmitOnErrorsPlugin } from 'webpack'
 
 const entry = [
   'react-hot-loader/patch',
@@ -18,14 +18,14 @@ const devServer = {
   host: 'localhost',
   port: 3001,
   headers: {
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
   },
 
   publicPath: '/',
 }
 
 const plugins = [
-  new NoErrorsPlugin,
+  new NoEmitOnErrorsPlugin,
   new HotModuleReplacementPlugin,
   new NamedModulesPlugin,
 ]
