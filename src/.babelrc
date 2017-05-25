@@ -6,15 +6,13 @@
         "browser": [ "last 2 versions" ]
       },
       "modules": false,
-      "debug": false
+      "debug": true
     }],
     "react"
   ],
   "plugins": [
-    [
-      "transform-object-rest-spread", {
-        "useBuiltIns": true
-      }
-    ]
+    "transform-runtime",
+    "transform-class-properties",
+    [ "transform-object-rest-spread", { "useBuiltIns": true } ]
   ]
 }

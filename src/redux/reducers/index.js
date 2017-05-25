@@ -1,5 +1,5 @@
-import things from './thing'
+import counter from './counter'
 
 export default {
-  things,
+  counter,
 }

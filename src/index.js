@@ -9,7 +9,7 @@ import Root from './Root'
 
 const store = configureStore({})
 
-const render = () => {
+const renderClient = () => {
   ReactDOM.render(
     <AppContainer>
       <Root store={store} />
@@ -18,8 +18,8 @@ const render = () => {
   )
 }
 
-render()
+renderClient()
 
 if (module.hot) {
-  module.hot.accept('./Root', () => { render() })
+  module.hot.accept('./Root', () => { renderClient() })
 }

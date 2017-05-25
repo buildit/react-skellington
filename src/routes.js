@@ -4,8 +4,10 @@ import { Route } from 'react-router'
 
 import App from './containers/App'
 
-const routes = () => (
-  <Route exact path="/" component={App} />
+const Routes = () => (
+  <div>
+    <Route exact path="/" component={App} />
+  </div>
 )
 
-export default routes
+export default Routes
