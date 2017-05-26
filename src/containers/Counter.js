@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Counter from '../components/Counter'
+import CounterView from '../components/CounterView'
 
 import { incrementCounter, decrementCounter } from '../redux/actions'
 
@@ -11,4 +11,6 @@ const mapDispatchToProps = {
   onDecrement: decrementCounter,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+const Counter = connect(mapStateToProps, mapDispatchToProps)(CounterView)
+
+export default Counter

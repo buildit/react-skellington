@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Counter = ({ value, onIncrement, onDecrement }) =>
+const CounterView = ({ value, onIncrement, onDecrement }) => (
   <div>
     <button onClick={onIncrement}>Increment</button>
     {' '}
@@ -11,11 +11,12 @@ const Counter = ({ value, onIncrement, onDecrement }) =>
       Clicked: {value} times
     </div>
   </div>
+)
 
-Counter.propTypes = {
+CounterView.propTypes = {
   value: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
 }
 
-export default Counter
+export default CounterView

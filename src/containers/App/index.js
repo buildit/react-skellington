@@ -1,14 +1,14 @@
 import React from 'react'
 
-import AppCounter from '../AppCounter'
+import Counter from '../Counter'
 
-import './style.scss'
+import styles from './style.scss'
 
 const App = () => (
-  <div className="site-wrapper">
+  <div className={styles.siteWrapper}>
     <h1>HAY HAY! BEEPLES PLARP PONK!!</h1>
     <div>
-      <AppCounter />
+      <Counter />
     </div>
   </div>
 )

@@ -14,7 +14,7 @@ const renderClient = () => {
     <AppContainer>
       <Root store={store} />
     </AppContainer>,
-    document.getElementById('main'),
+    document.getElementById('main')
   )
 }
 

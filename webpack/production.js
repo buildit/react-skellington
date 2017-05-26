@@ -1,23 +1,37 @@
+import merge from 'webpack-merge'
 
-import { optimize } from 'webpack'
+import parts from './parts'
 
-const devtool = 'source-map'
+const productionConfig = ({ context, entry, output }) => merge([
+  {
+    context,
+    entry,
+    output,
+  },
+  parts.generateSourceMaps({ type: 'source-map' }),
+])
 
-const plugins = [
-  new optimize.OccurrenceOrderPlugin,
-  new optimize.UglifyJsPlugin({
-    compress: {
-      screw_ie8: true,
-      warnings: false,
-    },
-    output: {
-      comments: false,
-    },
-    sourceMap: true,
-  }),
-]
+export default productionConfig
 
-export default {
-  devtool,
-  plugins,
-}
+// import { optimize } from 'webpack'
+
+// const devtool = 'source-map'
+
+// const plugins = [
+//   new optimize.OccurrenceOrderPlugin,
+//   new optimize.UglifyJsPlugin({
+//     compress: {
+//       screw_ie8: true,
+//       warnings: false,
+//     },
+//     output: {
+//       comments: false,
+//     },
+//     sourceMap: true,
+//   }),
+// ]
+
+// export default {
+//   devtool,
+//   plugins,
+// }

@@ -3,7 +3,9 @@
   "parser": "babel-eslint",
   "env": {
     "node": true,
-    "browser": true
+    "browser": true,
+    "es6": true,
+    "commonjs": true
   },
   "plugins": [
     "import",
@@ -16,8 +18,15 @@
   ],
   "rules": {
     "semi": [ 2, "never" ],
-    "no-console": [ 1 ],
-    "comma-dangle": [ 2, "always-multiline" ]
+    "indent": [ 2, 2 ],
+    "no-console": 0,
+    "comma-dangle": [ 2, {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }]
   },
   "parserOptions": {
     "ecmaVersion": 6,

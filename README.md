@@ -22,3 +22,5 @@ This is the _minimal_ set of dev dependencies I found that worked for my require
 - Refactor directory structure for redux and sagas related modules
 - Add various css (postcss, whatever) webpack loaders/rules
 - Add test harness - most likely involving mocha, chai and enzyme (enzyme wraps jsdom, so that is acceptable)
+- Decouple config from package.json
+- Decouple application paths from package.json
