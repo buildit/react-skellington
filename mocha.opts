@@ -1,0 +1,5 @@
+--colors
+--recursive
+--compilers js:babel-core/register
+--require ignore-styles
+--require test/setup.js

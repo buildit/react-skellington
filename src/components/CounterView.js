@@ -8,7 +8,7 @@ const CounterView = ({ value, onIncrement, onDecrement }) => (
     <button onClick={onDecrement}>Decrement</button>
     <hr />
     <div>
-      Clicked: {value} times
+      Clicked: <span className="value">{value}</span> times
     </div>
   </div>
 )

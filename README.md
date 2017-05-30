@@ -13,7 +13,16 @@ Also also assumes you want Moment.js.
 
 This is the _minimal_ set of dev dependencies I found that worked for my requirements - I wanted to write my webpack config as es6, I wanted webpack dev server, hot module reloading and some kind of production build.
 
-# TODO
+## GOALS
+
+- To _understand_ why a dependency is a dependency, not just blindly include it because some tutorial said to
+- To _document_ why dependencies are included, and what their inclusion actually entails
+- To aggressively gut dependencies until the absolute working core remains
+- To divide configuration between two states: *visible* and *protected*
+  - Where *visible* configuration is open about what it is doing and is open to change, and
+  - *protected* configuration is documented, but discourages manipulation unless it is discovered to be a flaw in the skeleton.
+
+## TODO
 
 - Clean up webpack config (inc. per-environment setup)
 - Verify requirment of specific babel plugins that seem dubious

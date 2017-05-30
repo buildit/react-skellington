@@ -5,7 +5,7 @@
     "node": true,
     "browser": true,
     "es6": true,
-    "commonjs": true
+    "mocha": true
   },
   "plugins": [
     "import",
