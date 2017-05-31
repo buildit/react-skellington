@@ -1,15 +1,32 @@
-import { devServer } from './devserver'
-import { lintJavascript, lintCss } from './linting'
-import { loadJavascript, generateSourceMaps } from './javascript'
-import { loadStyles } from './styles'
+import { loadJavascript, lintJavascript, generateSourceMaps, extractBundles } from './javascript'
+import { loadCSS, loadSass, lintCSS, extractCSS, autoprefix } from './css'
+
+import { devServer, devServerEntry, hotModulePlugin } from './devserver'
+import { cleanPlugin, noErrorsPlugin, namedModulesPlugin, htmlPlugin, occurrenceOrderPlugin, uglifyPlugin, hashedModuleIdsPlugin } from './plugins'
+
 import { page } from './page'
+import { stats } from './stats'
 
 export default {
   devServer,
+  devServerEntry,
+  hotModulePlugin,
+  cleanPlugin,
+  noErrorsPlugin,
+  namedModulesPlugin,
+  htmlPlugin,
+  occurrenceOrderPlugin,
+  uglifyPlugin,
+  hashedModuleIdsPlugin,
   generateSourceMaps,
   loadJavascript,
-  loadStyles,
+  extractBundles,
+  loadCSS,
+  loadSass,
+  extractCSS,
+  autoprefix,
   lintJavascript,
-  lintCss,
+  lintCSS,
   page,
+  stats,
 }
