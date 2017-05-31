@@ -10,16 +10,17 @@ import parts from './parts'
  * module for an explanation why this isn't so great (at the moment)
  */
 const productionConfig = ({ context, entry, output }) => merge([
-  { output },
   {
     context,
     entry,
-    output: {
-      filename: '[name].js',
-      publicPath: '/',
-    },
+    output,
     plugins: [
-      new CleanWebpackPlugin('build'),
+      new CleanWebpackPlugin(
+        'build',
+        {
+          root: context + '/..',
+        }
+      ),
       new optimize.OccurrenceOrderPlugin,
       new optimize.UglifyJsPlugin({
         compress: {
@@ -33,6 +34,11 @@ const productionConfig = ({ context, entry, output }) => merge([
       }),
     ],
   },
+
+  parts.loadStyles({ exclude: /node_modules/ }),
+
+  parts.lintJavascript({ exclude: /node_modules/ }),
+  parts.loadJavascript({ exclude: /node_modules/ }),
 
   parts.generateSourceMaps({ type: 'source-map' }),
 ])

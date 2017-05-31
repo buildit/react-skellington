@@ -1,6 +1,18 @@
 {
-  "presets": [ "env", "react" ],
   "plugins": [
     "transform-object-rest-spread"
-  ]
+  ],
+  "presets": [
+    [ "env", {
+        "es2015": { "modules": false },
+        "targets": { "browsers": [ "last 2 versions", "ie >= 11" ] },
+        "debug": false
+    }],
+    "react"
+  ],
+  "env": {
+    "test": {},
+    "development": {},
+    "production": {}
+  }
 }

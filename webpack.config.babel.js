@@ -16,6 +16,7 @@ export default env => {
     entry: [ './index.js' ],
 
     output: {
+      filename: '[name].js',
       path: PATHS.build,
       publicPath: '/',
     },

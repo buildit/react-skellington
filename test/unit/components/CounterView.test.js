@@ -5,7 +5,7 @@ import sinon from 'sinon'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import CounterView from '../src/components/CounterView'
+import CounterView from '../../../src/components/CounterView'
 
 describe('<CounterView />', () => {
   const props = {
@@ -25,6 +25,7 @@ describe('<CounterView />', () => {
 
     wrapper.find('button').first().simulate('click')
     wrapper.find('button').last().simulate('click')
+
     expect(onIncrement).to.have.property('callCount', 1)
     expect(onDecrement).to.have.property('callCount', 1)
   })

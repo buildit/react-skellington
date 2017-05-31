@@ -23,7 +23,7 @@ export const lintCss = ({ include, exclude }) => ({
         exclude,
         enforce: 'pre',
 
-        use: ['postcss-loader'],
+        loader: 'postcss-loader',
         options: {
           plugins: () => ([
             require('stylelint')(),

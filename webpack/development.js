@@ -19,25 +19,21 @@ import parts from './parts'
  * configuration...
  */
 const developmentConfig = ({ context, entry, output }) => merge.strategy({ entry: 'prepend' })([
-  { output },
   {
     context,
     entry,
-    output: {
-      filename: '[name].js',
-      publicPath: '/',
-      devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
-    },
+    output,
     plugins: [
       new NoEmitOnErrorsPlugin,
       new NamedModulesPlugin,
     ],
   },
 
+  // parts.lintCss({ exclude: /node_modules/ }),
   parts.loadStyles({ exclude: /node_modules/ }),
-  parts.loadJavascript({ exclude: /node_modules/ }),
 
   parts.lintJavascript({ exclude: /node_modules/ }),
+  parts.loadJavascript({ exclude: /node_modules/ }),
 
   parts.generateSourceMaps({ type: 'cheap-module-eval-source-map' }),
 
