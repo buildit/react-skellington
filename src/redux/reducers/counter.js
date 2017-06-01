@@ -4,8 +4,6 @@ import {
   INCREMENT_IF_ODD,
 } from '../constants'
 
-console.log('flamingo')
-
 const initialState = {
   value: 0,
 }

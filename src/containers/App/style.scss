@@ -1,5 +1,5 @@
 .site-wrapper {
-  background-color: cornsilk;
+  background-color: goldenrod;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -7,8 +7,9 @@
 
 h1 {
   color: blue;
+  text-decoration: underline;
 }
 
 p {
-  background-color: #FFFFFF;
+  background-color: #EEEEEE;
 }

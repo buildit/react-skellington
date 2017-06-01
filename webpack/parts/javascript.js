@@ -1,5 +1,7 @@
 import { optimize } from 'webpack'
 
+import BabiliPlugin from 'babili-webpack-plugin'
+
 export const loadJavascript = ({ include, exclude }) => ({
   module: {
     rules: [
@@ -32,7 +34,24 @@ export const lintJavascript = ({ include, exclude, options }) => ({
   },
 })
 
-export const generateSourceMaps = ({ type }) => ({
+export const uglifyJavascript = () => ({
+  plugins: [
+    new optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true,
+        warnings: false,
+      },
+      output: {
+        comments: false,
+      },
+      sourceMap: true,
+    }),
+  ],
+})
+
+export const minifyJavascript = () => ({ plugins: [ new BabiliPlugin ] })
+
+export const generateSourceMaps = type => ({
   devtool: type,
 })
 

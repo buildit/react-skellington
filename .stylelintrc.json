@@ -1,3 +1,5 @@
 {
-  "color-hex-case": "lower"
+  "rules": {
+    "color-hex-case": "lower"
+  }
 }

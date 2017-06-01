@@ -1,32 +1,17 @@
-import { loadJavascript, lintJavascript, generateSourceMaps, extractBundles } from './javascript'
-import { loadCSS, loadSass, lintCSS, extractCSS, autoprefix } from './css'
+import { loadJavascript, lintJavascript, minifyJavascript, uglifyJavascript, extractBundles, generateSourceMaps } from './javascript'
+import { loadStyles, lintStyles, extractStyles } from './style'
 
-import { devServer, devServerEntry, hotModulePlugin } from './devserver'
-import { cleanPlugin, noErrorsPlugin, namedModulesPlugin, htmlPlugin, occurrenceOrderPlugin, uglifyPlugin, hashedModuleIdsPlugin } from './plugins'
+import { devServer, hotloader } from './devserver'
 
+import { cleanPlugin, noErrorsPlugin, namedModulesPlugin, hashedModuleIdsPlugin } from './plugins'
 import { page } from './page'
 import { stats } from './stats'
 
 export default {
-  devServer,
-  devServerEntry,
-  hotModulePlugin,
-  cleanPlugin,
-  noErrorsPlugin,
-  namedModulesPlugin,
-  htmlPlugin,
-  occurrenceOrderPlugin,
-  uglifyPlugin,
-  hashedModuleIdsPlugin,
-  generateSourceMaps,
-  loadJavascript,
-  extractBundles,
-  loadCSS,
-  loadSass,
-  extractCSS,
-  autoprefix,
-  lintJavascript,
-  lintCSS,
+  loadJavascript, lintJavascript, minifyJavascript, uglifyJavascript, extractBundles, generateSourceMaps,
+  loadStyles, lintStyles, extractStyles,
+  devServer, hotloader,
+  cleanPlugin, noErrorsPlugin, namedModulesPlugin, hashedModuleIdsPlugin,
   page,
   stats,
 }

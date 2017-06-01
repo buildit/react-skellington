@@ -1,5 +1,3 @@
-import merge from 'webpack-merge'
-
 import { HotModuleReplacementPlugin } from 'webpack'
 
 const WDS_DEFAULTS = {
@@ -34,8 +32,16 @@ export const devServer = ({
 
     compress: true,
 
-    stats: 'minimal',
     // noInfo: false,
+    // stats: 'minimal',
+    stats: {
+      colors: true,
+      children: false,
+      chunks: false,
+      assetsSort: 'name',
+      version: false,
+      usedExports: true,
+    },
 
     overlay: {
       errors: true,
@@ -48,26 +54,18 @@ export const devServer = ({
 
     publicPath: '/',
   },
-
-})
-
-export const devServerEntry = ({
-  entry,
-  host = WDS_DEFAULTS.host,
-  port = WDS_DEFAULTS.port,
-} = {}) => merge.strategy({ entry: 'prepend' })([
-  { entry },
-  {
-    entry: [
-      'react-hot-loader/patch',
-      `webpack-dev-server/client?http://${host}:${port}`,
-      'webpack/hot/only-dev-server',
-    ],
-  },
-])
-
-export const hotModulePlugin = () => ({
   plugins: [
-    new HotModuleReplacementPlugin,
+    new HotModuleReplacementPlugin({
+      multiStep: true,
+    }),
   ],
 })
+
+// You don't apparently _have_ to specify a full URL for client...
+// but using `client?/` appears to make HMR + WDS do things twice
+export const hotloader = ({ host = WDS_DEFAULTS.host, port = WDS_DEFAULTS.port } = {}) => ([
+  'react-hot-loader/patch',
+  `webpack-dev-server/client?http://${host}:${port}`,
+  // `webpack-dev-server/client?/`,
+  'webpack/hot/only-dev-server',
+])

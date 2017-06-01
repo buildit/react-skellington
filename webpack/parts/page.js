@@ -1,6 +1,4 @@
-import merge from 'webpack-merge'
-
-import { htmlPlugin } from './plugins'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export const page = ({
   path = '',
@@ -10,7 +8,15 @@ export const page = ({
   title,
   entry,
   chunks,
-} = {}) => merge([
-  { entry },
-  htmlPlugin({ path, template, title, chunks }),
-])
+} = {}) => ({
+  entry,
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: `${path && path + '/'}index.html`,
+      inject: 'body',
+      template,
+      title,
+      chunks,
+    }),
+  ],
+})

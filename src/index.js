@@ -9,17 +9,20 @@ import Root from './Root'
 
 const store = configureStore({})
 
-const renderClient = () => {
+const renderClient = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Root store={store} />
+      <Component store={store} />
     </AppContainer>,
     document.getElementById('main')
   )
 }
 
-renderClient()
+renderClient(Root)
 
 if (module.hot) {
-  module.hot.accept('./Root', () => { renderClient() })
+  module.hot.accept('./Root', () => {
+    const NewRoot = require('./Root').default
+    renderClient(NewRoot)
+  })
 }

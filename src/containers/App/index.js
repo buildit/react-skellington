@@ -4,11 +4,9 @@ import Counter from '../Counter'
 
 import styles from './style.scss'
 
-console.dir(styles.siteWrapper, { colors: true, depth: null })
-
 const App = () => (
-  <div className='site-wrapper'>
-    <h1>HAY HAY! BEEPLES PLARP PONK!!</h1>
+  <div className={styles.siteWrapper}>
+    <h1>HAY HAY! BEEPLES PLARP PONK!! GORTS GANERTSSSSSS</h1>
     <div>
       <Counter />
     </div>
