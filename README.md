@@ -13,6 +13,17 @@ Also also assumes you want Moment.js.
 
 This is the _minimal_ set of dev dependencies I found that worked for my requirements - I wanted to write my webpack config as es6, I wanted webpack dev server, hot module reloading and some kind of production build.
 
+## QUICK START
+
+Use of *yarn* over *npm* is _highly_ encouraged. Just run `yarn install` and you're good to go.
+
+If instead you opt to use npm, use `npm install` and then don't come crying to me that something horrible is broken, because you can't trust npm to give you what you actually asked for.
+
+- For development, run `npm run dev`
+- For production build, run `npm run build`
+- Run tests with `npm test`
+- Lint javascript and styles with `npm run lint` and `npm run lint:style` respectively, or do both with `npm run lint`.
+
 ## GOALS
 
 - To _understand_ why a dependency is a dependency, not just blindly include it because some tutorial said to
