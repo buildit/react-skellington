@@ -2,6 +2,31 @@ import { optimize } from 'webpack'
 
 import BabiliPlugin from 'babili-webpack-plugin'
 
+const babeldev = () => ({
+  loader: 'babel-loader',
+  options: {
+    babelrc: false,
+    plugins: [
+      [
+        'transform-object-rest-spread',
+        { useBuiltIns: true },
+      ],
+    ],
+    presets: [
+      [
+        'env', {
+          targets: {
+            browsers: [ '> 5%', 'ie >= 11' ],
+          },
+          modules: false,
+          useBuiltIns: true,
+        },
+      ],
+      'react',
+    ],
+  },
+})
+
 export const loadJavascript = ({ include, exclude }) => ({
   module: {
     rules: [
@@ -11,7 +36,8 @@ export const loadJavascript = ({ include, exclude }) => ({
         exclude,
         use: [
           'react-hot-loader/webpack',
-          'babel-loader',
+          // 'babel-loader',
+          babeldev(),
         ],
       },
     ],
@@ -56,6 +82,6 @@ export const generateSourceMaps = type => ({
 })
 
 
-export const extractBundles = bundles => ({
+export const extractJavascript = bundles => ({
   plugins: bundles.map(bundle => new optimize.CommonsChunkPlugin(bundle)),
 })

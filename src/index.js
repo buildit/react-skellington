@@ -20,9 +20,4 @@ const renderClient = (Component) => {
 
 renderClient(Root)
 
-if (module.hot) {
-  module.hot.accept('./Root', () => {
-    const NewRoot = require('./Root').default
-    renderClient(NewRoot)
-  })
-}
+if (module.hot) module.hot.accept('./Root', () => renderClient(Root))

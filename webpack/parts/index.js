@@ -1,4 +1,4 @@
-import { loadJavascript, lintJavascript, minifyJavascript, uglifyJavascript, extractBundles, generateSourceMaps } from './javascript'
+import { loadJavascript, lintJavascript, minifyJavascript, uglifyJavascript, extractJavascript, generateSourceMaps } from './javascript'
 import { loadStyles, lintStyles, extractStyles } from './style'
 
 import { devServer, hotloader } from './devserver'
@@ -8,7 +8,7 @@ import { page } from './page'
 import { stats } from './stats'
 
 export default {
-  loadJavascript, lintJavascript, minifyJavascript, uglifyJavascript, extractBundles, generateSourceMaps,
+  loadJavascript, lintJavascript, minifyJavascript, uglifyJavascript, extractJavascript, generateSourceMaps,
   loadStyles, lintStyles, extractStyles,
   devServer, hotloader,
   cleanPlugin, noErrorsPlugin, namedModulesPlugin, hashedModuleIdsPlugin,

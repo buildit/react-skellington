@@ -6,7 +6,7 @@ import styles from './style.scss'
 
 const App = () => (
   <div className={styles.siteWrapper}>
-    <h1>HAY HAY! BEEPLES PLARP PONK!! GORTS GANERTSSSSSS</h1>
+    <h1>HAY HAY! BEEPLES PLARP PONK!! ROPEY TOAST</h1>
     <div>
       <Counter />
     </div>

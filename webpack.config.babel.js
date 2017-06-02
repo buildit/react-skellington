@@ -15,7 +15,6 @@ const PATHS = {
   root: resolve(__dirname),
   sources: join(__dirname, 'src'),
   build: join(__dirname, 'build'),
-  entry: join(__dirname, 'src', 'index.js'),
   exclude: [
     join(__dirname, 'build'),
     /node_modules/,
@@ -24,6 +23,7 @@ const PATHS = {
 
 const commonConfig = merge([
   {
+    context: PATHS.sources,
     output: {
       path: PATHS.build,
       filename: '[name].js',
@@ -32,8 +32,8 @@ const commonConfig = merge([
   },
 
   parts.lintStyles({ include: PATHS.sources }),
-
   parts.lintJavascript({ include: PATHS.sources }),
+
   parts.loadJavascript({ include: PATHS.sources, exclude: PATHS.exclude }),
 
   parts.namedModulesPlugin(),
@@ -46,7 +46,8 @@ const developmentConfig = merge([
   },
 
   parts.loadStyles({ include: PATHS.sources, exclude: PATHS.exclude }),
-  parts.devServer({ host: 'localhost', port: 3001 }),
+
+  parts.devServer({ host: 'localhost', port: 3001, contentBase: PATHS.sources }),
   parts.generateSourceMaps('cheap-module-eval-source-map'),
 ])
 
@@ -64,9 +65,11 @@ const productionConfig = merge([
   },
 
   parts.cleanPlugin({ path: PATHS.build, root: PATHS.root }),
+
   parts.minifyJavascript(),
+
   parts.extractStyles(),
-  parts.extractBundles([
+  parts.extractJavascript([
     { name: 'vendor', chunks: [ 'app' ], minChunks: isVendor },
     { name: 'manifest', minChunks: Infinity },
   ]),
@@ -83,14 +86,13 @@ export default env => {
   const config = merge([
     parts.page({
       title: 'React Skellington Test',
-      template: './src/index.html',
+      template: 'index.ejs',
       entry: {
         app: (
           isDevelopment ?
             parts.hotloader() : []
-          ).concat([ PATHS.sources ]),
+          ).concat([ './index.js' ]),
       },
-      chunks: [ 'manifest', 'vendor', 'app' ],
     }),
     commonConfig,
     isDevelopment ?

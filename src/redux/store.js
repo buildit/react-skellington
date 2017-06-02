@@ -9,7 +9,7 @@ import reducers from './reducers'
 
 import sagaManager from '../sagas/manager'
 
-const makeRootReducer = (reducers) => combineReducers({ ...reducers, router: routerReducer })
+const makeRootReducer = reducers => combineReducers({ ...reducers, router: routerReducer })
 
 const sagaMiddleware = createSagaMiddleware()
 const routeReduxMiddleware = routerMiddleware(browserHistory)
@@ -41,16 +41,12 @@ export default (initialState) => {
   sagaManager.startSagas(sagaMiddleware)
 
   if (module.hot) {
-    // Verified as working! State is preserved on reducer-related changes
-    module.hot.accept('./reducers', () => {
-      const replacementReducers = require('./reducers').default
-      store.replaceReducer(makeRootReducer(replacementReducers))
-    })
+    module.hot.accept('./reducers', () => store.replaceReducer(makeRootReducer(reducers)))
 
     // This is murky and unverified - need contrived saga example to verify
     module.hot.accept('../sagas/manager', () => {
       sagaManager.cancelSagas(store)
-      require('../sagas/manager').default.startSagas(sagaMiddleware)
+      sagaManager.startSagas(sagaMiddleware)
     })
   }
 

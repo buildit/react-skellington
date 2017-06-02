@@ -22,25 +22,29 @@ const WDS_DEFAULTS = {
 export const devServer = ({
   host = WDS_DEFAULTS.host,
   port = WDS_DEFAULTS.port,
+  contentBase,
 } = {}) => ({
   devServer: {
     host,
     port,
 
     hot: true,
-    historyApiFallback: true,
+    // historyApiFallback: true,
+    historyApiFallback: {
+      verbose: true,
+    },
 
     compress: true,
 
     // noInfo: false,
     // stats: 'minimal',
     stats: {
+      assets: false,
       colors: true,
       children: false,
       chunks: false,
       assetsSort: 'name',
       version: false,
-      usedExports: true,
     },
 
     overlay: {
@@ -53,19 +57,17 @@ export const devServer = ({
     },
 
     publicPath: '/',
+    contentBase,
   },
   plugins: [
     new HotModuleReplacementPlugin({
-      multiStep: true,
+      multiStep: false,
     }),
   ],
 })
 
-// You don't apparently _have_ to specify a full URL for client...
-// but using `client?/` appears to make HMR + WDS do things twice
-export const hotloader = ({ host = WDS_DEFAULTS.host, port = WDS_DEFAULTS.port } = {}) => ([
+export const hotloader = () => ([
   'react-hot-loader/patch',
-  `webpack-dev-server/client?http://${host}:${port}`,
-  // `webpack-dev-server/client?/`,
+  'webpack-dev-server/client',
   'webpack/hot/only-dev-server',
 ])

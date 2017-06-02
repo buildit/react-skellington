@@ -1,5 +1,6 @@
---colors
 --recursive
---compilers js:babel-core/register
+--colors
+--reporter spec
 --require ignore-styles
 --require test/setup.js
+--compilers js:babel-core/register

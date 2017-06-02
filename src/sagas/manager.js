@@ -6,7 +6,7 @@ const sagas = []
 
 export const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR'
 
-const createAbortableSaga = saga => {
+const createAbortableSaga = (saga) => {
   if (process.env.NODE_ENV === 'development') {
     return function* main () {
       const task = yield fork(saga)
