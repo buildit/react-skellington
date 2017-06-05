@@ -32,14 +32,21 @@ export function checkIndexAuthorization({ dispatch }) {
 }
 
 export function checkDashboardAuthorization({ dispatch, getState }) {
-  return (nextState, replace, next) => {
-    const user = getState().user
+  const user = getState().user
 
-    if (user) return next()
+  // if (user) return next()
+  if (user.token) return true
 
-    if (checkAuthorization(dispatch)) return next()
+  // if (checkAuthorization(dispatch)) return next()
+  if (checkAuthorization(dispatch)) return true
 
-    replace('login')
-    return next()
-  }
+  // replace('login')
+  // return next()
+  return false
 }
+
+// export function checkDashboardAuthorization({ dispatch, getState }) {
+//   console.log(dispatch, getState)
+//   console.log('WHAT UP ARSEBOATS?')
+//   return true
+// }

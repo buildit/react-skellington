@@ -15,7 +15,7 @@ const Root = ({ store }) => (
   <MuiThemeProvider muiTheme={getMuiTheme(bookitTheme)}>
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        { routes() }
+        { routes(store) }
       </ConnectedRouter>
     </Provider>
   </MuiThemeProvider>
