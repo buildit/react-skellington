@@ -1,16 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import Counter from '../Counter'
+import styles from './styles.scss'
 
-import styles from './style.scss'
-
-const App = () => (
-  <div className={styles.siteWrapper}>
-    <h1>HAY HAY! BEEPLES PLARP PONK!! ROPEY TOAST</h1>
-    <div>
-      <Counter />
-    </div>
+const App = props => (
+  <div className={styles.app}>
+    {props.children}
   </div>
 )
+
+App.propTypes = {
+  children: PropTypes.node,
+}
 
 export default App

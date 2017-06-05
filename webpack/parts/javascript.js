@@ -7,6 +7,11 @@ const babeldev = () => ({
   options: {
     babelrc: false,
     plugins: [
+      'transform-class-properties',
+      [
+        'transform-runtime',
+        { polyfill: false, regenerator: true },
+      ],
       [
         'transform-object-rest-spread',
         { useBuiltIns: true },

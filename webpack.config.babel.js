@@ -34,6 +34,9 @@ const commonConfig = merge([
   parts.lintStyles({ include: PATHS.sources }),
   parts.lintJavascript({ include: PATHS.sources }),
 
+  parts.loadHtml(),
+  parts.loadAssets({ include: PATHS.sources }),
+
   parts.loadJavascript({ include: PATHS.sources, exclude: PATHS.exclude }),
 
   parts.namedModulesPlugin(),
@@ -91,7 +94,7 @@ export default env => {
         app: (
           isDevelopment ?
             parts.hotloader() : []
-          ).concat([ './index.js' ]),
+          ).concat([ './client/index.js' ]),
       },
     }),
     commonConfig,
