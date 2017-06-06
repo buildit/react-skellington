@@ -13,7 +13,7 @@ export const loadHtml = () => ({
   },
 })
 
-export const loadAssets = ({ include, exclude }) => ({
+export const loadAssets = ({ include, exclude } = {}) => ({
   module: {
     rules: [
       {

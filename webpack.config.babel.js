@@ -35,7 +35,7 @@ const commonConfig = merge([
   parts.lintJavascript({ include: PATHS.sources }),
 
   parts.loadHtml(),
-  parts.loadAssets({ include: PATHS.sources }),
+  parts.loadAssets(),
 
   parts.loadJavascript({ include: PATHS.sources, exclude: PATHS.exclude }),
 
@@ -50,7 +50,7 @@ const developmentConfig = merge([
 
   parts.loadStyles({ include: PATHS.sources, exclude: PATHS.exclude }),
 
-  parts.devServer({ host: 'localhost', port: 3001, contentBase: PATHS.sources }),
+  parts.devServer({ host: 'localhost', port: 3001 }),
   parts.generateSourceMaps('cheap-module-eval-source-map'),
 ])
 

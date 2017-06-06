@@ -1,6 +1,6 @@
 import { setClient } from '../actions'
 
-function checkAuthorization(dispatch) {
+function checkStoredAuthorization(dispatch) {
   const storedUser = localStorage.getItem('user')
 
   if (storedUser) {
@@ -19,34 +19,8 @@ function checkAuthorization(dispatch) {
   return false
 }
 
-export function checkIndexAuthorization({ dispatch }) {
-  return (nextState, replace, next) => {
-    if (checkAuthorization(dispatch)) {
-      replace('dashboard')
-      return next()
-    }
-
-    replace('login')
-    return next()
-  }
-}
-
-export function checkDashboardAuthorization({ dispatch, getState }) {
-  const user = getState().user
-
-  // if (user) return next()
+export function isAuthorized(user, dispatch) {
   if (user.token) return true
-
-  // if (checkAuthorization(dispatch)) return next()
-  if (checkAuthorization(dispatch)) return true
-
-  // replace('login')
-  // return next()
+  if (checkStoredAuthorization(dispatch)) return true
   return false
 }
-
-// export function checkDashboardAuthorization({ dispatch, getState }) {
-//   console.log(dispatch, getState)
-//   console.log('WHAT UP ARSEBOATS?')
-//   return true
-// }

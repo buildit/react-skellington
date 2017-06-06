@@ -18,13 +18,25 @@ export const loadStyles = ({ include, exclude }) => ({
         include,
         exclude,
         use: [
-          { loader: 'style-loader', options: { sourceMap: true } },
+          {
+            loader: 'style-loader',
+            options: { sourceMap: true },
+          },
           {
             loader: 'css-loader',
-            options: { sourceMap: true, modules: true, camelCase: 'only', localIdentName: '[name]-[local]', importLoaders: 2 },
+            options: {
+              sourceMap: true,
+              modules: true,
+              camelCase: 'only',
+              localIdentName: '[name]-[local]--[hash:base64:5]',
+              importLoaders: 2,
+            },
           },
           autoprefix(),
-          { loader: 'sass-loader', options: { sourceMap: true } },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true },
+          },
         ],
       },
     ],

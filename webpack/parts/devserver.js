@@ -22,7 +22,6 @@ const WDS_DEFAULTS = {
 export const devServer = ({
   host = WDS_DEFAULTS.host,
   port = WDS_DEFAULTS.port,
-  contentBase,
 } = {}) => ({
   devServer: {
     host,
@@ -57,7 +56,6 @@ export const devServer = ({
     },
 
     publicPath: '/',
-    contentBase,
   },
   plugins: [
     new HotModuleReplacementPlugin({

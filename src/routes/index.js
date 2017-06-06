@@ -1,41 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-import { Switch, Route, Redirect } from 'react-router'
+import { Switch, Route } from 'react-router'
+
+import ProtectedRoute from './ProtectedRoute'
 
 // import App from '../containers/App'
 import Login from '../containers/Login'
 import Dashboard from '../containers/Dashboard'
 
-import { checkDashboardAuthorization } from '../lib/check-auth'
+import styles from '../containers/App/styles.scss'
 
-const routes = store => (
-  <div>
+const routes = () => (
+  <div className={styles.app}>
     <Switch>
       {/*<Route exact path="/" component={App} />*/}
       <Route exact path="/login" component={Login} />
-      <PrivateRoute path="/" store={store} component={Dashboard} />
+      <ProtectedRoute path="/" component={Dashboard} />
     </Switch>
   </div>
 )
-
-const PrivateRoute = ({ component: Component, store, ...rest }) => (
-  <Route {...rest} render={props => (
-    checkDashboardAuthorization(store) ? (
-      <Component {...props} />
-    ) : (
-      <Redirect to={{
-        pathname: '/login',
-        state: { from: props.location },
-      }} />
-    )
-  )} />
-)
-
-PrivateRoute.propTypes = {
-  component: PropTypes.component,
-  store: PropTypes.object,
-  location: PropTypes.string,
-}
 
 export default routes

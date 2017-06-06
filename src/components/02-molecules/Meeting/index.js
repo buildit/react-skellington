@@ -64,7 +64,7 @@ class MeetingContainer extends React.Component {
       effectiveLeft = (tlRect.left - mRect.left)
     }
 
-    this.$tooltip.className = styles['tooltip--visible']
+    this.$tooltip.className = styles.tooltipVisible
     this.$tooltip.style.left = `${effectiveLeft}px`
 
     this.$meeting.addEventListener('mousemove', this.handleMouseMove)
