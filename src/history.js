@@ -1,4 +1,8 @@
-import createHistory from 'history/createBrowserHistory'
+import createMemoryHistory from 'history/createMemoryHistory'
+import createBrowserHistory from 'history/createBrowserHistory'
+
+const createHistory = process.env.NODE_ENV === 'test' ?
+  createMemoryHistory : createBrowserHistory
 
 /**
  * Create a global reference to browserHistory to allow hooking up

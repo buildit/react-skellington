@@ -1,6 +1,3 @@
-import 'jsdom-global/register'
-import 'regenerator-runtime/runtime'
-
 import { takeEvery } from 'redux-saga/effects'
 import { fetchMeetings, createMeeting } from './meetings'
 import { login, logout } from './auth'

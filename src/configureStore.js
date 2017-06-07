@@ -5,7 +5,7 @@ import { reducer as formReducer } from 'redux-form'
 
 import createSagaMiddleware from 'redux-saga'
 
-import browserHistory from './history'
+import history from './history'
 import reducers from './reducers'
 import sagaManager from './sagas'
 
@@ -16,7 +16,7 @@ const makeRootReducer = reducers => combineReducers({
 })
 
 const sagaMiddleware = createSagaMiddleware()
-const routeReduxMiddleware = routerMiddleware(browserHistory)
+const routeReduxMiddleware = routerMiddleware(history)
 
 const middlewares = [routeReduxMiddleware, sagaMiddleware]
 

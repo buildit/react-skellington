@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime'
 
 import { call, put } from 'redux-saga/effects'
 
-import browserHistory from '../history'
+import history from '../history'
 
 import api from '../api'
 
@@ -21,7 +21,7 @@ export function* login(action) {
     yield put(resetUi())
     yield put(loginSuccess())
     localStorage.setItem('user', JSON.stringify(user))
-    browserHistory.push('/dashboard')
+    history.push('/dashboard')
   } catch (error) {
     // TODO: Catch meaningful errors from above
     // and pass them to `loginFailure`
@@ -33,5 +33,5 @@ export function* login(action) {
 export function* logout() {
   yield put(resetUser())
   localStorage.removeItem('user')
-  browserHistory.push('/login')
+  history.push('/login')
 }
