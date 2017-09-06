@@ -8,7 +8,7 @@
     "lint": "npm-run-all lint:style lint:js",
     "lint:js": "eslint src/ test/ --cache",
     "lint:style": "stylelint src/**/*.scss src/**/*.css",
-    "test": "jest"
+    "test": "jest -c .jestrc.json"
   },
   "author": "BuildIt",
   "license": "Apache-2.0",
@@ -66,20 +66,5 @@
     "redux-form-material-ui": "^4.2.0",
     "redux-saga": "^0.15.3",
     "superagent": "^3.5.2"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "^[./a-zA-Z0-9!&$_-]+\\.(css|scss)$": "identity-obj-proxy"
-    },
-    "testPathIgnorePatterns": [ "<rootDir>/(build|docs|node_modules|images)/" ],
-    "testEnvironment": "jsdom",
-    "testRegex": "\\.test.js$",
-    "collectCoverageFrom": [ "**/*.js" ],
-    "rootDir": ".",
-    "globals": {
-      "window": {}
-    },
-    "setupFiles": [ "<rootDir>/__mocks__/storageMock.js" ]
   }
 }

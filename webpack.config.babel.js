@@ -80,7 +80,7 @@ const productionConfig = merge([
   parts.generateSourceMaps('source-map'),
 ])
 
-export default env => {
+export default (env) => {
   process.env.NODE_ENV = env
   process.env.BABEL_ENV = env
 
@@ -102,7 +102,7 @@ export default env => {
       developmentConfig : productionConfig,
   ])
 
-  console.dir(config, { depth: null, colors: true })
+  // console.dir(config, { depth: null, colors: true })
 
   return config
 }
